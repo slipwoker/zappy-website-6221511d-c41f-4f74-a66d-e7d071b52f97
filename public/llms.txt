@@ -7,61 +7,61 @@
 ## Pages
 
 ### בית
-https://-6221511d.zappy5.app
+https://example.com
 המרכז הרפואי סוניל מזמין אתכם לחוויית אשפוז ורפואה מתקדמת עם צוות מומחים, מחלקות חדשניות ושירות אישי. גלו מידע מקיף למטופלים ולמבקרים וקבעו את הצעד הראשון לבריאות מיטבית.
 
 ### אודות
-https://-6221511d.zappy5.app/about
+https://example.com/about
 הכירו את החזון, ההיסטוריה וההנהלה שמאחורי המרכז הרפואי סוניל. אנו מחויבים להוביל את תחום ה-max healthcare hospital בישראל עם שקיפות, אמינות וטיפול מקצועי ששם את המטופל במרכז.
 
 ### מיקום והגעה
-https://-6221511d.zappy5.app/location-access
+https://example.com/location-access
 מתכננים ביקור? קבלו את כל דרכי ההגעה, החניה והנגישות למרכז הרפואי סוניל. אנו דואגים שתגיעו אלינו בקלות כדי שתוכלו להתרכז במה שחשוב באמת — הבריאות שלכם.
 
 ### מחלקות ומרפאות
-https://-6221511d.zappy5.app/departments-clinics
+https://example.com/departments-clinics
 חקרו את מגוון המחלקות והמרפאות המתקדמות של המרכז הרפואי סוניל. מכירורגיה ועד רפואת משפחה, אנו משלבים טכנולוגיה מתקדמת עם max healthcare hospital service לאיכות חיים גבוהה יותר.
 
 ### רופאים ומידע למטופל
-https://-6221511d.zappy5.app/doctors-patient-information
+https://example.com/doctors-patient-information
 פגשו את צוות הרופאים המובילים של המרכז הרפואי סוניל וקבלו גישה למידע חיוני למטופל: מדריכי הכנה, זכויות רפואיות וטפסים שימושיים. אנו משלבים hca healthcare hospitals standards עם ליווי אישי וחם.
 
 ### שאלות נפוצות, חדשות ויצירת קשר
-https://-6221511d.zappy5.app/faq-news-contact
+https://example.com/faq-news-contact
 יש שאלות? אנחנו כאן עם מענה מקיף. התעדכנו בחדשות, אירועים ועדכוני מדיניות במרכז הרפואי סוניל, או צרו קשר ישיר עם צוות שירות הלקוחות שלנו — united healthcare hospitals במיטבם.
 
 ### מגזין הבריאות של המרכז הרפואי סוניל
-https://-6221511d.zappy5.app/faq-news-contact/thank-you
+https://example.com/faq-news-contact/thank-you
 המרכז הרפואי סוניל - מגזין הבריאות של המרכז הרפואי סוניל
 
 ### בדיקות
-https://-6221511d.zappy5.app/blog/preventive-checkups-guide
+https://example.com/blog/preventive-checkups-guide
 מדריך ברור לבדיקות מניעה חשובות, למה הן חיוניות, ואיך להתאים אותן לגיל, להיסטוריה הרפואית ולאורח החיים.
 
 ### ניתוח
-https://-6221511d.zappy5.app/blog/preparing-for-surgery
+https://example.com/blog/preparing-for-surgery
 הנחיות מעשיות להכנה לניתוח מתוכנן, כולל בדיקות מקדימות, שאלות לצוות הרפואי, תרופות, תזונה והתאוששות בבית.
 
 ### ילדים
-https://-6221511d.zappy5.app/blog/children-fever-when-to-seek-help
+https://example.com/blog/children-fever-when-to-seek-help
 סקירה מעשית להורים על חום בילדים, סימני אזהרה, מדידה נכונה, הקלה בבית ומצבים שמצריכים פנייה לצוות רפואי.
 
 ### החלמה
-https://-6221511d.zappy5.app/blog/recovery-after-hospitalization
+https://example.com/blog/recovery-after-hospitalization
 עקרונות חשובים להחלמה לאחר אשפוז: תרופות, תזונה, מעקב, סימני אזהרה, תמיכת בני משפחה ותיאום המשך טיפול.
 
 ## Legal & Policy
 
 ### Privacy Policy
-https://-6221511d.zappy5.app/privacy
+https://example.com/privacy
 Information about how user data is collected, stored, and protected.
 
 ### Terms & Conditions
-https://-6221511d.zappy5.app/terms
+https://example.com/terms
 Legal terms describing service usage, rights, and policies.
 
 ### Accessibility Statement
-https://-6221511d.zappy5.app/accessibility
+https://example.com/accessibility
 Information about WCAG compliance and accessibility features.
 
 ---
@@ -71,8 +71,8 @@ Information about WCAG compliance and accessibility features.
 - (No contact details configured yet.)
 
 ### Contact form
-- URL: https://-6221511d.zappy5.app/faq-news-contact
-- Endpoint: https://-6221511d.zappy5.app/api/email/contact-form
+- URL: https://example.com/faq-news-contact
+- Endpoint: https://example.com/api/email/contact-form
 - Method: POST
 - Content-Type: application/json
 - Fields:
@@ -105,6 +105,6 @@ Healthcare / Hospital
 
 # Machine-readable feeds
 
-- Sitemap (XML): https://-6221511d.zappy5.app/sitemap.xml
-- Robots: https://-6221511d.zappy5.app/robots.txt
-- Flattened page text (for LLMs): https://-6221511d.zappy5.app/llms-full.txt
+- Sitemap (XML): https://example.com/sitemap.xml
+- Robots: https://example.com/robots.txt
+- Flattened page text (for LLMs): https://example.com/llms-full.txt
