@@ -1,0 +1,28 @@
+# Clean URL redirects for Render static hosting
+# Generated: 2026-06-28T14:25:25.359Z
+# NOTE: Render uses render.yaml for routing, not _redirects (that is Netlify)
+# This file is kept for reference only
+
+/about  /about.html  200!
+/location-access  /location-access.html  200!
+/departments-clinics  /departments-clinics.html  200!
+/doctors-patient-information  /doctors-patient-information.html  200!
+/faq-news-contact  /faq-news-contact.html  200!
+/privacy  /privacy.html  200!
+/accessibility  /accessibility.html  200!
+/terms  /terms.html  200!
+/faq-news-contact/thank-you  /faq-news-contact/thank-you.html  200!
+/blog/preventive-checkups-guide  /blog/preventive-checkups-guide.html  200!
+/blog/preparing-for-surgery  /blog/preparing-for-surgery.html  200!
+/blog/children-fever-when-to-seek-help  /blog/children-fever-when-to-seek-help.html  200!
+/blog/recovery-after-hospitalization  /blog/recovery-after-hospitalization.html  200!
+
+# Legal pages - redirect old .html URLs to friendly URLs
+/privacy.html  /privacy  301
+/accessibility.html  /accessibility  301
+/terms.html  /terms  301
+
+/  /index.html  200!
+
+# SPA fallback - serve index.html for all unmatched routes
+/*  /index.html  200

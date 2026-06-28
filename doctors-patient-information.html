@@ -1,0 +1,1452 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <title>הכוח המקצועי שמאחורי הטיפול — המרכז הרפואי סוניל</title>
+    <meta name="description" content="פגשו את צוות הרופאים המובילים של המרכז הרפואי סוניל וקבלו גישה למידע חיוני למטופל: מדריכי הכנה, זכויות רפואיות וטפסים שימושיים. אנו משלבים hca healthcare hospitals standards עם ליווי אישי וחם.">
+    <meta name="keywords" content="hca healthcare hospitals, רופאים מומחים, זכויות מטופל, הכנה לניתוח, max healthcare hospital list">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon-512x512.png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <!-- Zappy Analytics -->
+<script>
+(function() {
+  'use strict';
+  
+  // Configuration
+  var config = {
+    websiteId: '6221511d-c41f-4f74-a66d-e7d071b52f97',
+    apiUrl: 'https://api.zappy5.com/api/analytics/track',
+    sessionDuration: 30 * 60 * 1000, // 30 minutes
+    visitorDuration: 30 * 24 * 60 * 60 * 1000, // 30 days
+    trackPageViews: true,
+    trackClicks: true,
+    trackFormSubmissions: true
+  };
+  
+  // Generate or retrieve persistent visitor ID (30 days)
+  function getVisitorId() {
+    var visitorKey = 'zappy_visitor_' + config.websiteId;
+    var visitor = null;
+    
+    try {
+      visitor = localStorage.getItem(visitorKey);
+      if (visitor) {
+        var visitorData = JSON.parse(visitor);
+        var now = Date.now();
+        
+        // Check if visitor ID is still valid (30 days)
+        if (now - visitorData.created < config.visitorDuration) {
+          // Update last seen timestamp
+          visitorData.lastSeen = now;
+          localStorage.setItem(visitorKey, JSON.stringify(visitorData));
+          return visitorData.id;
+        }
+      }
+    } catch (e) {
+      console.warn('Zappy Analytics: LocalStorage not available');
+    }
+    
+    // Generate new visitor ID
+    var newVisitorId = 'zv_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    
+    try {
+      localStorage.setItem(visitorKey, JSON.stringify({
+        id: newVisitorId,
+        created: Date.now(),
+        lastSeen: Date.now()
+      }));
+    } catch (e) {
+      // Continue without local storage
+    }
+    
+    return newVisitorId;
+  }
+  
+  // Generate or retrieve session ID (30 minutes)
+  function getSessionId() {
+    var sessionKey = 'zappy_session_' + config.websiteId;
+    var session = null;
+    
+    try {
+      session = sessionStorage.getItem(sessionKey);
+      if (session) {
+        var sessionData = JSON.parse(session);
+        var now = Date.now();
+        
+        // Check if session is still valid
+        if (now - sessionData.timestamp < config.sessionDuration) {
+          // Update timestamp
+          sessionData.timestamp = now;
+          sessionStorage.setItem(sessionKey, JSON.stringify(sessionData));
+          return sessionData.id;
+        }
+      }
+    } catch (e) {
+      console.warn('Zappy Analytics: SessionStorage not available');
+    }
+    
+    // Generate new session ID
+    var newSessionId = 'zs_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    
+    try {
+      sessionStorage.setItem(sessionKey, JSON.stringify({
+        id: newSessionId,
+        timestamp: Date.now()
+      }));
+    } catch (e) {
+      // Continue without session storage
+    }
+    
+    return newSessionId;
+  }
+  
+  var visitorId = getVisitorId();
+  var sessionId = getSessionId();
+  
+  // Track an event
+  function trackEvent(eventType, data) {
+    data = data || {};
+    
+    var eventData = {
+      website_id: config.websiteId,
+      event_type: eventType,
+      page_path: window.location.pathname,
+      referrer: document.referrer || 'direct',
+      visitor_id: visitorId,
+      session_id: sessionId,
+      metadata: data
+    };
+    
+    // Use sendBeacon if available (better for page unload events)
+    if (navigator.sendBeacon) {
+      var blob = new Blob([JSON.stringify(eventData)], { type: 'application/json' });
+      navigator.sendBeacon(config.apiUrl, blob);
+    } else {
+      // Fallback to fetch
+      fetch(config.apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(eventData),
+        keepalive: true
+      }).catch(function(error) {
+        console.warn('Zappy Analytics: Failed to track event', error);
+      });
+    }
+  }
+  
+  // Track page view
+  if (config.trackPageViews) {
+    trackEvent('pageview', {
+      title: document.title,
+      url: window.location.href
+    });
+  }
+  
+  // Track clicks on important elements
+  if (config.trackClicks) {
+    document.addEventListener('click', function(e) {
+      var target = e.target;
+      
+      // Track button clicks (counted as actions)
+      if (target.tagName === 'BUTTON' || target.closest('button')) {
+        var button = target.tagName === 'BUTTON' ? target : target.closest('button');
+        var clickMeta = {
+          element: 'button',
+          text: button.textContent.trim().substring(0, 100),
+          id: button.id || null,
+          class: button.className || null
+        };
+        
+        trackEvent('click', clickMeta);
+      }
+      
+      // Track link clicks (navigation - not counted as actions)
+      else if (target.tagName === 'A' || target.closest('a')) {
+        var link = target.tagName === 'A' ? target : target.closest('a');
+        var navMeta = {
+          element: 'link',
+          text: link.textContent.trim().substring(0, 100),
+          href: link.href,
+          external: link.hostname !== window.location.hostname
+        };
+        
+        trackEvent('navigation', navMeta);
+      }
+    }, true);
+  }
+  
+  
+  // Track form submissions
+  if (config.trackFormSubmissions) {
+    document.addEventListener('submit', function(e) {
+      var form = e.target;
+      
+      trackEvent('form_submit', {
+        form_id: form.id || null,
+        form_name: form.name || null,
+        form_action: form.action || null,
+        form_method: form.method || 'GET'
+      });
+    }, true);
+  }
+  
+  // Track time on page (send on page unload)
+  var pageLoadTime = Date.now();
+  
+  window.addEventListener('beforeunload', function() {
+    var timeOnPage = Math.floor((Date.now() - pageLoadTime) / 1000); // in seconds
+    
+    trackEvent('page_unload', {
+      time_on_page: timeOnPage,
+      page_path: window.location.pathname
+    });
+  });
+  
+  // Expose tracking function globally for custom events
+  window.zappyAnalytics = {
+    track: trackEvent,
+    getVisitorId: function() { return visitorId; },
+    getSessionId: function() { return sessionId; }
+  };
+  
+})();
+</script>
+<!-- End Zappy Analytics -->
+    <meta property="og:title" content="הכוח המקצועי שמאחורי הטיפול — המרכז הרפואי סוניל">
+    <meta property="og:description" content="פגשו את צוות הרופאים המובילים של המרכז הרפואי סוניל וקבלו גישה למידע חיוני למטופל: מדריכי הכנה, זכויות רפואיות וטפסים שימושיים. אנו משלבים hca healthcare hospitals standards עם ליווי אישי וחם.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="הכוח המקצועי שמאחורי הטיפול — המרכז הרפואי סוניל">
+    <meta name="twitter:description" content="פגשו את צוות הרופאים המובילים של המרכז הרפואי סוניל וקבלו גישה למידע חיוני למטופל: מדריכי הכנה, זכויות רפואיות וטפסים שימושיים. אנו משלבים hca healthcare hospitals standards עם ליווי אישי וחם.">
+    <meta property="og:type" content="website">
+  <meta property="og:locale" content="he_IL">
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .skip-link { position: absolute; top: 0; left: 0; transform: translateY(-200%); padding: 12px 18px; background: var(--bg-dark, #1a1a1a); color: var(--text-light, #fff); font-weight: 600; border-radius: 0 0 8px 0; z-index: 10000; }
+    .skip-link:focus { transform: none; outline: 2px solid var(--ring, #fff); outline-offset: 2px; }
+    :focus-visible { outline: 2px solid var(--ring, currentColor); outline-offset: 3px; }
+  </style>
+
+
+  
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon-512x512.png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <!-- Cookie Consent -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.css">
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.umd.js"></script>
+    <!-- Mickidum Accessibility Toolbar -->
+    <script src="https://cdn.jsdelivr.net/gh/mickidum/acc_toolbar/acctoolbar/acctoolbar.min.js"></script>
+<style>
+      /* Dropdown sub-menu styles (AI-generated page) */
+      .nav-menu li:has(.sub-menu),
+      nav li:has(.sub-menu),
+      .navbar li:has(.sub-menu) {
+        position: relative;
+      }
+      .nav-menu .sub-menu,
+      nav .sub-menu,
+      .navbar .sub-menu {
+        display: block;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        min-width: 220px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        padding: 8px 0;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: all 0.3s ease;
+        z-index: 1000;
+        list-style: none;
+        pointer-events: none;
+      }
+      .nav-menu li:hover > .sub-menu,
+      nav li:hover > .sub-menu,
+      .navbar li:hover > .sub-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+      .sub-menu li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .sub-menu a {
+        display: block;
+        padding: 10px 16px;
+        color: #333;
+        font-weight: 500;
+        text-decoration: none;
+        white-space: nowrap;
+        transition: background-color 0.2s;
+      }
+      .sub-menu a:hover {
+        background-color: #f5f5f5;
+      }
+      /* RTL dropdown positioning */
+      [dir="rtl"] .sub-menu,
+      html[lang="he"] .sub-menu,
+      html[lang="ar"] .sub-menu {
+        left: auto;
+        right: 0;
+      }
+    </style>
+    <link rel="stylesheet" href="/styles.css">
+    <script>window.ZAPPY_WEBSITE_ID = "6221511d-c41f-4f74-a66d-e7d071b52f97"; window.ZAPPY_API_BASE = "https://api.zappy5.com";</script>
+
+    <style id="zappy-dropdown-submenu-styles">
+      /* ========== DESKTOP DROPDOWN SUBMENU STYLES ========== */
+      /* Base styles for dropdown submenus - parent must be positioned */
+      .nav-menu li:has(.sub-menu), nav li:has(.sub-menu), .navbar li:has(.sub-menu), #navMenu li:has(.sub-menu) { position: relative; }
+      /* Submenu base - hidden by default */
+      .nav-menu .sub-menu, nav .sub-menu, .navbar .sub-menu, #navMenu .sub-menu { display: block !important; position: absolute !important; top: 100%; left: 0; min-width: 220px; background: white; border-radius: 8px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); padding: 8px 0; opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.3s ease; z-index: 1000; list-style: none; pointer-events: none; }
+      /* CRITICAL: Desktop hover styles to show dropdown */
+      .nav-menu li:hover > .sub-menu, nav li:hover > .sub-menu, .navbar li:hover > .sub-menu, #navMenu li:hover > .sub-menu { opacity: 1 !important; visibility: visible !important; transform: translateY(0) !important; pointer-events: auto !important; }
+      /* Submenu item styling */
+      .sub-menu li { list-style: none; margin: 0; padding: 0; }
+      .sub-menu a { display: block !important; padding: 10px 16px !important; color: var(--text-dark, #333) !important; font-weight: 500; text-decoration: none; white-space: nowrap; transition: background-color 0.2s; }
+      .sub-menu .zappy-nav-child > a { padding-left: 28px !important; font-size: 0.9em !important; opacity: 0.85 !important; }
+      [dir="rtl"] .sub-menu .zappy-nav-child > a, html[lang="he"] .sub-menu .zappy-nav-child > a, html[lang="ar"] .sub-menu .zappy-nav-child > a { padding-left: 10px !important; padding-right: 28px !important; }
+      .sub-menu .zappy-nav-parent > a { font-weight: 600 !important; }
+      .sub-menu a:hover { background-color: #f5f5f5; }
+      /* RTL (Hebrew/Arabic) dropdown positioning */
+      [dir="rtl"] .nav-menu .sub-menu, [dir="rtl"] nav .sub-menu, [dir="rtl"] .navbar .sub-menu, html[lang="he"] .nav-menu .sub-menu, html[lang="he"] nav .sub-menu, html[lang="he"] .navbar .sub-menu, html[lang="ar"] .nav-menu .sub-menu, html[lang="ar"] nav .sub-menu, html[lang="ar"] .navbar .sub-menu { left: auto !important; right: 0 !important; }
+      /* Hide empty dropdown menus (exclude catalog sub-menus that use <a> children instead of <li>) */
+      .sub-menu:empty, .sub-menu:not(:has(li:not(.zappy-hidden-menu-item))):not(:has(> a)), .sub-menu:not(:has(li)):not(:has(> a)) { display: none !important; opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; }
+      /* Desktop: show submenu on Menu Group hover */
+      li:has(.menu-group-title):hover > .sub-menu { opacity: 1 !important; visibility: visible !important; transform: translateY(0) !important; pointer-events: auto !important; }
+      /* Menu Group title styling */
+      .nav-menu > li > .menu-group-title, #navMenu > li > .menu-group-title { display: inline-block; padding: 0.5rem 1rem; cursor: default; user-select: none; }
+      
+      /* ========== MOBILE SUBMENU STYLES ========== */
+      @media (max-width: 768px) {
+        .nav-menu .sub-menu, nav .sub-menu, .navbar .sub-menu, #navMenu .sub-menu { position: static !important; transform: none !important; box-shadow: none !important; background: transparent !important; max-height: 0; overflow: hidden; opacity: 0; visibility: hidden; transition: max-height 0.3s ease, opacity 0.3s ease; padding: 0 !important; border-radius: 0 !important; }
+        .navbar .sub-menu.mobile-expanded, .nav-menu .sub-menu.mobile-expanded, #navMenu .sub-menu.mobile-expanded { max-height: none !important; overflow-y: visible !important; opacity: 1 !important; visibility: visible !important; padding: 8px 0 8px 16px !important; }
+        [dir="rtl"] .sub-menu.mobile-expanded, html[lang="he"] .sub-menu.mobile-expanded { padding: 8px 16px 8px 0 !important; }
+        /* Disable hover behavior on mobile */
+        .nav-menu li:hover > .sub-menu, nav li:hover > .sub-menu, .navbar li:hover > .sub-menu, #navMenu li:hover > .sub-menu { opacity: 0; visibility: hidden; pointer-events: none; }
+        .nav-menu li > .sub-menu.mobile-expanded, nav li > .sub-menu.mobile-expanded, .navbar li > .sub-menu.mobile-expanded, #navMenu li > .sub-menu.mobile-expanded { opacity: 1 !important; visibility: visible !important; pointer-events: auto !important; }
+        .nav-menu li:has(.sub-menu), nav li:has(.sub-menu), .navbar li:has(.sub-menu), #navMenu li:has(.sub-menu) { display: flex !important; flex-wrap: wrap !important; align-items: center !important; position: relative !important; min-height: 44px !important; }
+        .nav-menu li:has(.sub-menu) > a, nav li:has(.sub-menu) > a, .navbar li:has(.sub-menu) > a, #navMenu li:has(.sub-menu) > a { flex: 1 !important; min-width: 0 !important; }
+        .nav-menu li:has(.sub-menu) > .menu-group-title, nav li:has(.sub-menu) > .menu-group-title, .navbar li:has(.sub-menu) > .menu-group-title, #navMenu li:has(.sub-menu) > .menu-group-title { flex: 1 !important; min-width: 0 !important; padding: 0 !important; line-height: inherit !important; }
+        .nav-menu li:has(.sub-menu) > .sub-menu, nav li:has(.sub-menu) > .sub-menu, .navbar li:has(.sub-menu) > .sub-menu, #navMenu li:has(.sub-menu) > .sub-menu { flex-basis: 100% !important; width: 100% !important; }
+        .nav-menu li:has(.sub-menu) > a [class*="chevron"], .nav-menu li:has(.sub-menu) > a [class*="arrow"], .nav-menu li:has(.sub-menu) > a .fa-chevron-down, .nav-menu li:has(.sub-menu) > a .fa-angle-down, nav li:has(.sub-menu) > a [class*="chevron"], nav li:has(.sub-menu) > a [class*="arrow"], #navMenu li:has(.sub-menu) > a [class*="chevron"], #navMenu li:has(.sub-menu) > a [class*="arrow"] { display: none !important; visibility: hidden !important; }
+        .mobile-submenu-toggle { display: flex !important; align-items: center !important; justify-content: center !important; width: 44px !important; height: auto !important; background: transparent !important; border: none !important; cursor: pointer !important; color: var(--text-dark) !important; position: static !important; flex-shrink: 0 !important; align-self: stretch !important; z-index: 2 !important; padding: 0 !important; margin: 0 !important; }
+        .mobile-submenu-toggle::after { content: '' !important; width: 0 !important; height: 0 !important; border-left: 6px solid transparent !important; border-right: 6px solid transparent !important; border-top: 7px solid currentColor !important; transition: transform 0.3s ease !important; }
+        .mobile-submenu-toggle.expanded::after { transform: rotate(180deg) !important; }
+        .sub-menu a { padding: 10px 0 !important; display: block !important; color: var(--text-dark) !important; white-space: normal !important; }
+        .sub-menu .zappy-nav-child > a { padding-left: 28px !important; font-size: 0.9em !important; opacity: 0.85 !important; }
+        [dir="rtl"] .sub-menu .zappy-nav-child > a, html[lang="he"] .sub-menu .zappy-nav-child > a, html[lang="ar"] .sub-menu .zappy-nav-child > a { padding-left: 0 !important; padding-right: 28px !important; }
+        .sub-menu .zappy-nav-parent > a { font-weight: 600 !important; }
+        .nav-menu.active, #navMenu.active { max-width: 100vw !important; overflow-x: hidden !important; box-sizing: border-box !important; }
+        .navbar .sub-menu li a, nav.navbar .sub-menu li a, .zappy-products-dropdown .sub-menu a { color: var(--text-dark) !important; }
+      }
+      @media (min-width: 769px) { .mobile-submenu-toggle { display: none !important; } }
+    </style>
+
+    <style id="zappy-widget-visibility">
+      html[dir="rtl"] .whatsapp-float { right: 20px !important; left: auto !important; }
+      html[dir="ltr"] .whatsapp-float, html:not([dir]) .whatsapp-float { left: 20px !important; right: auto !important; }
+      html[dir="rtl"] #mic-access-tool-general-button, html[dir="rtl"] .mic-access-tool-general-button,
+      html[dir="rtl"] #mic-init-access-tool .mic-access-tool-general-button,
+      html[dir="rtl"] #mic-init-access-tool #mic-access-tool-general-button,
+      html[dir="rtl"] ._access-icon { left: 20px !important; right: auto !important; }
+      html[dir="ltr"] #mic-access-tool-general-button, html[dir="ltr"] .mic-access-tool-general-button,
+      html[dir="ltr"] #mic-init-access-tool .mic-access-tool-general-button,
+      html[dir="ltr"] #mic-init-access-tool #mic-access-tool-general-button,
+      html[dir="ltr"] ._access-icon,
+      html:not([dir]) #mic-access-tool-general-button, html:not([dir]) .mic-access-tool-general-button,
+      html:not([dir]) #mic-init-access-tool .mic-access-tool-general-button,
+      html:not([dir]) #mic-init-access-tool #mic-access-tool-general-button,
+      html:not([dir]) ._access-icon { right: 20px !important; left: auto !important; }
+      @media (max-width: 768px) { .whatsapp-float { display: flex !important; } }
+      @media (min-width: 769px) { .whatsapp-float { display: flex !important; } }
+      @media (max-width: 768px) {
+        #mic-access-tool-general-button, .mic-access-tool-general-button,
+        #mic-init-access-tool .mic-access-tool-general-button, #mic-init-access-tool #mic-access-tool-general-button,
+        ._access-icon { display: flex !important; visibility: visible !important; opacity: 1 !important; pointer-events: auto !important; }
+        #mic-access-tool-box.opened-mic-access-tool, .mic-access-tool-box.opened-mic-access-tool,
+        #mic-init-access-tool #mic-access-tool-box.opened-mic-access-tool {
+          visibility: visible !important; opacity: 1 !important; pointer-events: auto !important;
+        }
+      }
+      @media (min-width: 769px) {
+        #mic-access-tool-general-button, .mic-access-tool-general-button,
+        #mic-init-access-tool .mic-access-tool-general-button, #mic-init-access-tool #mic-access-tool-general-button,
+        ._access-icon { display: flex !important; visibility: visible !important; opacity: 1 !important; pointer-events: auto !important; }
+        #mic-access-tool-box.opened-mic-access-tool, .mic-access-tool-box.opened-mic-access-tool,
+        #mic-init-access-tool #mic-access-tool-box.opened-mic-access-tool {
+          visibility: visible !important; opacity: 1 !important; pointer-events: auto !important;
+        }
+      }
+    </style>
+</head>
+<body>
+<a class="skip-link" href="#main">דלג לתוכן הראשי</a>
+  <nav class="navbar" dir="rtl">
+  <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+    <svg class="hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    <svg class="close-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" style="display: none;">
+      <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </button>
+  
+  <button class="phone-header-btn" data-phone="[business_phone]" aria-label="Call">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+    </svg>
+  </button>
+
+  <div class="nav-container">
+    <div class="nav-right-group"><div class="nav-brand">
+      <a href="/" class="logo-link"><img class="logo" src="/assets/site---------------------image-1.webp" alt="המרכז הרפואי סוניל"></a>
+    </div><ul class="nav-menu" id="navMenu"><li><a href="/">בית</a></li><li><a href="/about">אודות</a></li><li><a href="/location-access">מיקום והגעה</a></li><li><a href="/departments-clinics">מחלקות ומרפאות</a></li><li><a href="/doctors-patient-information">רופאים ומידע למטופל</a></li><li class="mobile-contact-link nav-cta-mobile-item"><a href="/faq-news-contact" class="nav-cta-btn">שאלות נפוצות, חדשות ויצירת קשר</a></li></ul></div>
+    
+    
+    
+    <div class="nav-cta-container">
+      <a href="/faq-news-contact" class="nav-cta-btn">שאלות נפוצות, חדשות ויצירת קשר</a>
+    </div>
+  </div>
+</nav>
+<script>
+
+// Navbar Mobile Menu Toggle and Contrast Fix
+(function() {
+  // Use 'load' event instead of 'DOMContentLoaded' to ensure we run AFTER all other scripts
+  window.addEventListener('load', function() {
+    
+    // FIX MOBILE BUTTON CONTRAST
+    // Detect navbar background color and apply contrasting color to mobile buttons
+    const navbar = document.querySelector('.navbar, nav, header');
+    if (!navbar) {
+      console.log('[Navbar] Navbar element not found');
+      return;
+    }
+    
+    // DECLARE VARIABLES EARLY to avoid Temporal Dead Zone errors
+    // These are used in multiple places below
+    let mobileToggle = document.getElementById('mobileToggle') ||
+                       document.querySelector('.mobile-toggle') ||
+                       document.querySelector('.hamburger') ||
+                       document.querySelector('.hamburger-menu') ||
+                       document.querySelector('.menu-toggle') ||
+                       document.querySelector('.burger-menu') ||
+                       document.querySelector('[aria-label="Menu"]') ||
+                       document.querySelector('[aria-label="תפריט"]');
+    
+    const phoneBtn = document.querySelector('.phone-header-btn');
+    
+    const computedStyle = window.getComputedStyle(navbar);
+    let bgColor = computedStyle.backgroundColor;
+    
+    console.log('[Navbar] Initial navbar background:', bgColor);
+    
+    // Check if background is transparent or rgba with 0 alpha
+    const isTransparent = bgColor === 'transparent' || 
+                         bgColor === 'rgba(0, 0, 0, 0)' ||
+                         (bgColor.startsWith('rgba') && bgColor.includes(', 0)'));
+    
+    if (isTransparent) {
+      // Check for background-image or gradient
+      const bgImage = computedStyle.backgroundImage;
+      if (bgImage && bgImage !== 'none') {
+        console.log('[Navbar] Navbar has background image/gradient, using dark text');
+        bgColor = 'rgb(240, 240, 240)'; // Assume light background
+      } else {
+        // Transparent navbar - check body background
+        const bodyBg = window.getComputedStyle(document.body).backgroundColor;
+        console.log('[Navbar] Navbar transparent, using body background:', bodyBg);
+        bgColor = bodyBg;
+      }
+    }
+    
+    // Calculate luminance to determine if background is light or dark
+    const rgb = bgColor.match(/\d+/g);
+    if (rgb && rgb.length >= 3) {
+      const r = parseInt(rgb[0]);
+      const g = parseInt(rgb[1]);
+      const b = parseInt(rgb[2]);
+      const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+      
+      // Mobile button colors are set by Claude's AI-generated CSS (same as .nav-menu a)
+      // No dynamic color overrides needed - colors come from the generated navbar CSS
+      console.log('[Navbar] Mobile button colors preserved from Claude CSS (luminance:', luminance.toFixed(2) + ')');
+      
+      // FIX ICON SIZES - Ensure SVGs are properly sized and visible
+      // INJECT CRITICAL CSS TO OVERRIDE ANY CONFLICTING RULES
+      const criticalCSS = document.createElement('style');
+      criticalCSS.id = 'zappy-mobile-nav-fix';
+      const htmlLang = document.documentElement.lang || 'en';
+      const htmlDir = document.documentElement.dir || 'ltr';
+      // Check both dir attribute AND lang for RTL detection
+      // dir="rtl" is the most reliable indicator
+      const isRTL = htmlDir === 'rtl' || htmlLang === 'he' || htmlLang === 'ar';
+      
+      criticalCSS.textContent = `
+        /* Hide mobile buttons on desktop, show only on mobile */
+        @media (min-width: 769px) {
+          .mobile-toggle,
+          .phone-header-btn {
+            display: none !important;
+          }
+        }
+        
+        /* Show and position mobile buttons correctly on mobile */
+        @media (max-width: 768px) {
+          .navbar,
+          nav.navbar {
+            min-height: 70px !important;
+          }
+
+          .mobile-toggle,
+          .phone-header-btn {
+            position: absolute !important;
+            top: 0 !important;
+            bottom: 0 !important;
+            margin-top: auto !important;
+            margin-bottom: auto !important;
+            transform: none !important;
+            z-index: 1001 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            width: 36px !important;
+            height: 36px !important;
+            border-radius: 50% !important;
+            border: none !important;
+            cursor: pointer !important;
+            padding: 6px !important;
+            background: none !important;
+            color: var(--nav-text, var(--text-dark)) !important;
+            touch-action: manipulation !important;
+            -webkit-tap-highlight-color: transparent !important;
+          }
+
+          html[data-zappy-site-type="ecommerce"] .phone-header-btn,
+          body[data-zappy-site-type="ecommerce"] .phone-header-btn,
+          html[data-zappy-site-type="ecommerce"] header .phone-header-btn,
+          html[data-zappy-site-type="ecommerce"] nav .phone-header-btn {
+            display: none !important;
+            visibility: hidden !important;
+            width: 0 !important;
+            height: 0 !important;
+            min-width: 0 !important;
+            overflow: hidden !important;
+          }
+          
+          /* LTR positioning (default): hamburger LEFT, phone RIGHT */
+          html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .mobile-toggle,
+          html[dir="ltr"] .mobile-toggle {
+            left: 12px !important;
+            right: auto !important;
+          }
+          html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .phone-header-btn,
+          html[dir="ltr"] .phone-header-btn {
+            right: 12px !important;
+            left: auto !important;
+          }
+          
+          /* RTL positioning: hamburger RIGHT, phone LEFT */
+          html[dir="rtl"] .mobile-toggle,
+          html[lang="he"] .mobile-toggle,
+          html[lang="ar"] .mobile-toggle {
+            right: 12px !important;
+            left: auto !important;
+          }
+          html[dir="rtl"] .phone-header-btn,
+          html[lang="he"] .phone-header-btn,
+          html[lang="ar"] .phone-header-btn {
+            left: 12px !important;
+            right: auto !important;
+          }
+          
+          /* CRITICAL: Ensure nav-container has min-height on mobile */
+          /* All children are positioned absolutely/fixed on mobile, so height:auto collapses to 0 */
+          .nav-container {
+            min-height: 70px !important;
+            position: relative !important;
+          }
+          
+          /* Ensure SVG icons are properly sized and inherit color */
+          .mobile-toggle svg,
+          .phone-header-btn svg {
+            width: 24px !important;
+            height: 24px !important;
+            /* Don't force display - let JavaScript control hamburger/close toggle */
+          }
+          
+          /* Reset nav-cta-container on mobile - remove desktop box-shadow/padding */
+          /* that creates a visible ghost box when CTA button is hidden */
+          .nav-cta-container {
+            box-shadow: none !important;
+            padding: 0 !important;
+          }
+          
+          /* Hide nav-cta-container entirely on mobile when there's no lang-switcher */
+          /* (only the CTA button is inside, and it's hidden on mobile) */
+          .nav-cta-container:not(:has(.lang-switcher)) {
+            display: none !important;
+          }
+          
+          /* CRITICAL: Prevent hero image fade gradient from bleeding over headline text */
+          /* The .image-fade-gradient has bottom: -30px (extends below parent) */
+          /* On mobile stacked layout, this overlaps the h1 text below the image */
+          .hero-image-column {
+            overflow: hidden !important;
+          }
+          .image-fade-gradient {
+            bottom: 0 !important;
+          }
+          
+          /* Hide desktop language switcher on mobile - hamburger menu handles it */
+          /* High specificity to override stored CSS */
+          .lang-switcher,
+          .nav-cta-container .lang-switcher,
+          .nav-container .lang-switcher,
+          .navbar .lang-switcher,
+          .navbar .nav-cta-container .lang-switcher {
+            display: none !important;
+          }
+        }
+      `;
+      
+      // Remove existing fix if present and inject new one
+      const existing = document.getElementById('zappy-mobile-nav-fix');
+      if (existing) existing.remove();
+      document.head.appendChild(criticalCSS);
+      
+      console.log('[Navbar] Critical CSS injected for mobile nav positioning');
+      
+      // ONLY apply inline positioning styles on mobile viewport
+      // On desktop, the CSS handles hiding these buttons with display: none
+      // Inline styles were breaking desktop layout by overriding CSS
+      const isMobileViewport = window.innerWidth <= 768;
+      
+      if (mobileToggle) {
+        // Icon sizing applies to all viewports for consistency
+        const hamburgerIcon = mobileToggle.querySelector('.hamburger-icon');
+        const closeIcon = mobileToggle.querySelector('.close-icon');
+        
+        if (hamburgerIcon) {
+          hamburgerIcon.style.setProperty('width', '24px', 'important');
+          hamburgerIcon.style.setProperty('height', '24px', 'important');
+          hamburgerIcon.style.setProperty('display', 'block', 'important'); // Show hamburger by default
+        }
+        if (closeIcon) {
+          closeIcon.style.setProperty('width', '24px', 'important');
+          closeIcon.style.setProperty('height', '24px', 'important');
+          closeIcon.style.setProperty('display', 'none', 'important'); // Hide close icon by default
+        }
+        
+        // ONLY set positioning inline styles on mobile
+        if (isMobileViewport) {
+          mobileToggle.style.setProperty('position', 'absolute', 'important');
+          mobileToggle.style.setProperty('top', '0', 'important');
+          mobileToggle.style.setProperty('bottom', '0', 'important');
+          mobileToggle.style.setProperty('margin-top', 'auto', 'important');
+          mobileToggle.style.setProperty('margin-bottom', 'auto', 'important');
+          mobileToggle.style.setProperty('transform', 'none', 'important');
+          mobileToggle.style.setProperty('z-index', '1001', 'important');
+          
+          // Clear any inline left/right so CSS can take over based on html[dir]
+          mobileToggle.style.removeProperty('left');
+          mobileToggle.style.removeProperty('right');
+          
+          console.log('[Navbar] Mobile toggle positioning applied (mobile viewport)');
+        } else {
+          // On desktop, clear any positioning styles to let CSS handle it
+          mobileToggle.style.removeProperty('position');
+          mobileToggle.style.removeProperty('top');
+          mobileToggle.style.removeProperty('transform');
+          mobileToggle.style.removeProperty('z-index');
+          mobileToggle.style.removeProperty('left');
+          mobileToggle.style.removeProperty('right');
+          console.log('[Navbar] Desktop viewport - cleared mobile toggle inline positioning');
+        }
+      }
+      
+      if (phoneBtn) {
+        // Icon sizing applies to all viewports
+        const phoneIcon = phoneBtn.querySelector('svg');
+        if (phoneIcon) {
+          phoneIcon.style.width = '24px';
+          phoneIcon.style.height = '24px';
+          phoneIcon.setAttribute('width', '24');
+          phoneIcon.setAttribute('height', '24');
+        }
+        
+        // ONLY set positioning inline styles on mobile
+        if (isMobileViewport) {
+          phoneBtn.style.setProperty('position', 'absolute', 'important');
+          phoneBtn.style.setProperty('top', '0', 'important');
+          phoneBtn.style.setProperty('bottom', '0', 'important');
+          phoneBtn.style.setProperty('margin-top', 'auto', 'important');
+          phoneBtn.style.setProperty('margin-bottom', 'auto', 'important');
+          phoneBtn.style.setProperty('transform', 'none', 'important');
+          phoneBtn.style.setProperty('z-index', '1001', 'important');
+          
+          // Clear any inline left/right so CSS can take over based on html[dir]
+          phoneBtn.style.removeProperty('left');
+          phoneBtn.style.removeProperty('right');
+          
+          console.log('[Navbar] Phone button positioning applied (mobile viewport)');
+        } else {
+          // On desktop, clear any positioning styles to let CSS handle it
+          phoneBtn.style.removeProperty('position');
+          phoneBtn.style.removeProperty('top');
+          phoneBtn.style.removeProperty('transform');
+          phoneBtn.style.removeProperty('z-index');
+          phoneBtn.style.removeProperty('left');
+          phoneBtn.style.removeProperty('right');
+          console.log('[Navbar] Desktop viewport - cleared phone button inline positioning');
+        }
+      }
+    } else {
+      console.log('[Navbar] Could not parse background color:', bgColor);
+    }
+    
+    // MOBILE MENU TOGGLE
+    // Re-query in case DOM changed (mobileToggle already declared at top of function)
+    mobileToggle = document.getElementById('mobileToggle') ||
+                   document.querySelector('.mobile-toggle') ||
+                   document.querySelector('.hamburger') ||
+                   document.querySelector('.hamburger-menu') ||
+                   document.querySelector('.menu-toggle') ||
+                   document.querySelector('.burger-menu') ||
+                   document.querySelector('[aria-label="Menu"]') ||
+                   document.querySelector('[aria-label="תפריט"]');
+    
+    // EXPANDED SEARCH: Find nav menu by ID or class
+    const navMenu = document.getElementById('navMenu') ||
+                  document.querySelector('.nav-menu') ||
+                  document.querySelector('.nav-links') ||
+                  document.querySelector('nav ul:not(.submenu)');
+    
+    if (!mobileToggle || !navMenu) {
+      console.log('[Navbar] Mobile toggle or menu not found:', { toggle: !!mobileToggle, menu: !!navMenu });
+      return;
+    }
+    
+    // Ensure navMenu has ID for CSS targeting
+    if (!navMenu.id) {
+      navMenu.id = 'navMenu';
+    }
+    
+    console.log('[Navbar] Initializing mobile menu...');
+    
+    // Remove any existing event listeners by cloning the button
+    const newToggle = mobileToggle.cloneNode(true);
+    mobileToggle.parentNode.replaceChild(newToggle, mobileToggle);
+    
+    // Toggle menu handler (shared by click and touchend)
+    function handleToggle(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      const hamburgerIcon = newToggle.querySelector('.hamburger-icon');
+      const closeIcon = newToggle.querySelector('.close-icon');
+      const isActive = navMenu.classList.contains('active');
+      
+      if (isActive) {
+        // Close menu
+        navMenu.classList.remove('active');
+        if (hamburgerIcon) hamburgerIcon.style.setProperty('display', 'block', 'important');
+        if (closeIcon) closeIcon.style.setProperty('display', 'none', 'important');
+        document.body.style.overflow = '';
+        document.body.classList.remove('menu-open');
+        console.log('[Navbar] Menu closed');
+      } else {
+        // Open menu
+        navMenu.classList.add('active');
+        if (hamburgerIcon) hamburgerIcon.style.setProperty('display', 'none', 'important');
+        if (closeIcon) closeIcon.style.setProperty('display', 'block', 'important');
+        document.body.style.overflow = 'hidden';
+        document.body.classList.add('menu-open');
+        console.log('[Navbar] Menu opened');
+      }
+    }
+    
+    // Use click for desktop/emulation and touchend as iOS Safari fallback.
+    // Prevent double-fire with a timestamp guard.
+    var lastToggleTime = 0;
+    function guardedToggle(e) {
+      var now = Date.now();
+      if (now - lastToggleTime < 300) return;
+      lastToggleTime = now;
+      handleToggle(e);
+    }
+    
+    newToggle.addEventListener('click', guardedToggle);
+    newToggle.addEventListener('touchend', guardedToggle);
+
+    // Close the full-screen overlay menu on Escape
+    document.addEventListener('keydown', function(e) {
+      if ((e.key === 'Escape' || e.key === 'Esc') && navMenu.classList.contains('active')) {
+        const hamburgerIcon = newToggle.querySelector('.hamburger-icon');
+        const closeIcon = newToggle.querySelector('.close-icon');
+        navMenu.classList.remove('active');
+        if (hamburgerIcon) hamburgerIcon.style.setProperty('display', 'block', 'important');
+        if (closeIcon) closeIcon.style.setProperty('display', 'none', 'important');
+        document.body.style.overflow = '';
+        document.body.classList.remove('menu-open');
+        console.log('[Navbar] Menu closed (Escape)');
+      }
+    });
+    
+    // Close menu when clicking nav links (but NOT dropdown toggles)
+    const navLinks = navMenu.querySelectorAll('a');
+    navLinks.forEach(function(link) {
+      link.addEventListener('click', function() {
+        // Don't close if it's a dropdown child (unless it's a real navigation link)
+        if (this.getAttribute('href') === '#') return;
+        
+        const hamburgerIcon = newToggle.querySelector('.hamburger-icon');
+        const closeIcon = newToggle.querySelector('.close-icon');
+        
+        navMenu.classList.remove('active');
+        if (hamburgerIcon) hamburgerIcon.style.setProperty('display', 'block', 'important');
+        if (closeIcon) closeIcon.style.setProperty('display', 'none', 'important');
+        document.body.style.overflow = '';
+        document.body.classList.remove('menu-open');
+        console.log('[Navbar] Menu closed (link clicked)');
+      });
+    });
+    
+    // DROPDOWN MENU TOGGLE (for mobile and touch devices)
+    var dropdownToggles = navMenu.querySelectorAll('.dropdown-toggle');
+    dropdownToggles.forEach(function(toggle) {
+      toggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var parent = this.closest('.nav-dropdown');
+        if (!parent) return;
+        
+        // Close other open dropdowns at the same level
+        var siblings = parent.parentNode.querySelectorAll('.nav-dropdown.open');
+        siblings.forEach(function(sib) {
+          if (sib !== parent) sib.classList.remove('open');
+        });
+        
+        parent.classList.toggle('open');
+        console.log('[Navbar] Dropdown toggled:', parent.classList.contains('open') ? 'open' : 'closed');
+      });
+    });
+    
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.nav-dropdown')) {
+        var openDropdowns = document.querySelectorAll('.nav-dropdown.open');
+        openDropdowns.forEach(function(dd) { dd.classList.remove('open'); });
+      }
+    });
+    
+    console.log('[Navbar] Dropdown handlers initialized for ' + dropdownToggles.length + ' dropdowns');
+    
+    // Phone button functionality (phoneBtn already declared at top of function)
+    if (phoneBtn) {
+      phoneBtn.addEventListener('click', function() {
+        // Get phone number from placeholder in page or use default
+        const phoneLinks = document.querySelectorAll('a[href^="tel:"]');
+        const phoneNumber = phoneLinks.length > 0 
+          ? phoneLinks[0].getAttribute('href').replace('tel:', '')
+          : '[business_phone]';
+        
+        window.location.href = 'tel:' + phoneNumber;
+        console.log('[Navbar] Phone button clicked');
+      });
+    }
+    
+    console.log('[Navbar] Mobile menu initialized successfully');
+    
+    // WhatsApp button visibility is now controlled via CSS (siteSettings).
+    // No JS-based desktop hiding — the button is visible on both mobile and desktop by default.
+  });
+})();
+
+</script>
+  
+  <main id="main">
+    <section class="doctors-patient-information-intro-section" data-layout-spec="רופאים ומידע למטופל-intro" dir="rtl">
+  <div class="intro-container">
+    <!-- Header Block -->
+    <div class="intro-header">
+      <h1 class="intro-title">הצוות הרפואי והמידע החיוני למטופל</h1>
+      <p class="intro-subtitle">המרכז הרפואי סוניל מעמיד לרשותכם צוות מומחים מהשורה הראשונה, לצד מידע מקיף שילווה אתכם בכל שלב — מההכנה לביקור ועד להחלמה.</p>
+      <div class="gold-horizontal-rule" aria-hidden="true"></div>
+    </div>
+
+    <!-- Dual Cards Layout -->
+    <div class="intro-dual-grid">
+      
+      <!-- Left Column (Physicians) - In RTL this is the END (visual left) -->
+      <div class="intro-card physicians-card">
+        <div class="card-icon-wrapper">
+          <svg data-element-type="icon" data-icon-type="svg" class="card-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M12 14C8.13401 14 5 17.134 5 21H19C19 17.134 15.866 14 12 14Z" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M18 10L22 14M20 12L20 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h2 class="card-title">הרופאים שלנו</h2>
+        <p class="card-description">הכירו את צוות המומחים המוביל של המרכז הרפואי סוניל. כל רופא ורופאה מביאים עמם ניסיון עשיר, הכשרה מתקדמת ומחויבות עמוקה לבריאות המטופלים.</p>
+        <ul class="card-features">
+          <li class="feature-item">
+            <svg data-element-type="icon" data-icon-type="svg" class="feature-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 13L9 17L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>מעל 150 רופאים מומחים</span>
+          </li>
+          <li class="feature-item">
+            <svg data-element-type="icon" data-icon-type="svg" class="feature-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 13L9 17L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>התמחויות בכל תחומי הרפואה</span>
+          </li>
+          <li class="feature-item">
+            <svg data-element-type="icon" data-icon-type="svg" class="feature-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 13L9 17L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>גישה אישית וחמה לכל מטופל</span>
+          </li>
+        </ul>
+        <a href="#" class="card-cta">
+          <span>לצפייה בפרופילי הרופאים</span>
+          <svg data-element-type="icon" data-icon-type="svg" class="cta-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 19L8 12L15 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <!-- Right Column (Patient Info) - In RTL this is the START (visual right) -->
+      <div class="intro-card patient-info-card">
+        <div class="card-icon-wrapper">
+          <svg data-element-type="icon" data-icon-type="svg" class="card-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 13.5997 2.37562 15.1116 3.04346 16.4525C3.22094 16.8088 3.28001 17.2161 3.17712 17.6006L2.58151 19.8267C2.32295 20.793 3.20701 21.677 4.17335 21.4185L6.39939 20.8229C6.78393 20.72 7.19121 20.7791 7.54753 20.9565C8.88837 21.6244 10.4003 22 12 22Z" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <h2 class="card-title">מידע למטופל</h2>
+        <p class="card-description">כל מה שצריך לדעת כדי להגיע מוכנים — מהכנה לבדיקות ואשפוז, דרך זכויות המטופל ועד להנחיות למשפחות המבקרות. אנחנו כאן כדי להפוך את החוויה הרפואית לפשוטה וברורה.</p>
+        <ul class="card-features">
+          <li class="feature-item">
+            <svg data-element-type="icon" data-icon-type="svg" class="feature-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 13L9 17L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>הכנה לאשפוז ובדיקות</span>
+          </li>
+          <li class="feature-item">
+            <svg data-element-type="icon" data-icon-type="svg" class="feature-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 13L9 17L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>זכויות המטופל והטבות</span>
+          </li>
+          <li class="feature-item">
+            <svg data-element-type="icon" data-icon-type="svg" class="feature-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 13L9 17L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>שאלות נפוצות וטפסים</span>
+          </li>
+        </ul>
+        <a href="#" class="card-cta">
+          <span>למידע המלא למטופל</span>
+          <svg data-element-type="icon" data-icon-type="svg" class="cta-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 19L8 12L15 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Bottom Divider: Smooth stone-colored wave -->
+  <div class="intro-divider-wrapper" aria-hidden="true">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1200 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,80 L0,30 Q75,15 150,25 T300,20 Q375,25 450,15 T600,20 Q675,15 750,25 T900,20 Q975,25 1050,15 T1200,20 L1200,80 Z" fill="var(--bg-light)"/>
+    </svg>
+  </div>
+</section>
+
+<section class="doctors-patient-information-team-section" data-layout-spec="רופאים ומידע למטופל-team">
+  <div class="team-container">
+    <div class="team-header">
+      <h2 class="team-heading">הצוות הרפואי שלנו</h2>
+      <p class="team-subheading">רופאים מומחים מכל תחומי הרפואה, כאן כדי להעניק לכם את הטיפול הטוב והבטוח ביותר</p>
+    </div>
+
+    <div class="team-grid">
+      <!-- Card 1 -->
+      <article class="team-card">
+        <div class="team-card-image-wrapper">
+          <img loading="eager" fetchpriority="high" data-placeholder="doctors-patient-information-team-image-1" data-context="Portrait of a senior male cardiologist in his 50s, wearing a white coat with a stethoscope, standing confidently in a modern hospital corridor with soft natural lighting, professional headshot style" width="300" height="360" src="/assets/site-doctors-patient-information-team-image-1.webp" alt="דיוקן רופא קרדיולוג בכיר" class="team-card-image">
+        </div>
+        <div class="team-card-content">
+          <h3 class="team-card-name">פרופ׳ אבי כהן</h3>
+          <p class="team-card-specialty">מנהל המחלקה הקרדיולוגית</p>
+          <p class="team-card-bio">מומחה בקרדיולוגיה פולשנית עם ניסיון של למעלה מ-25 שנה בטיפול במחלות לב מורכבות ובצנתורים מתקדמים.</p>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="team-card">
+        <div class="team-card-image-wrapper">
+          <img loading="lazy" decoding="async" data-placeholder="doctors-patient-information-team-image-2" data-context="Portrait of a female oncologist in her 40s, wearing a white coat, standing in a bright consultation room with a warm smile, professional medical portrait" width="300" height="360" src="/assets/site-doctors-patient-information-team-image-2.webp" alt="דיוקן רופאה אונקולוגית" class="team-card-image">
+        </div>
+        <div class="team-card-content">
+          <h3 class="team-card-name">ד״ר מיכל לוי</h3>
+          <p class="team-card-specialty">מנהלת היחידה לאונקולוגיה</p>
+          <p class="team-card-bio">מתמחה בטיפולים אימונותרפיים וממוקדים בסרטן, מובילה מחקרים קליניים פורצי דרך לשיפור איכות חיי המטופלים.</p>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="team-card">
+        <div class="team-card-image-wrapper">
+          <img loading="lazy" decoding="async" data-placeholder="doctors-patient-information-team-image-3" data-context="Portrait of a male orthopedic surgeon in his 45s, wearing surgical scrubs and a white coat, standing in front of an operating room door, confident and approachable expression" width="300" height="360" src="/assets/site-doctors-patient-information-team-image-3.webp" alt="דיוקן רופא אורתופד בכיר" class="team-card-image">
+        </div>
+        <div class="team-card-content">
+          <h3 class="team-card-name">ד״ר יוסי אברהם</h3>
+          <p class="team-card-specialty">מומחה בכירורגיה אורתופדית</p>
+          <p class="team-card-bio">בעל התמחות-על בניתוחי החלפת מפרקים ופציעות ספורט, עם דגש על שיקום מהיר וחזרה מלאה לתפקוד.</p>
+        </div>
+      </article>
+
+      <!-- Card 4 -->
+      <article class="team-card">
+        <div class="team-card-image-wrapper">
+          <img loading="lazy" decoding="async" data-placeholder="doctors-patient-information-team-image-4" data-context="Portrait of a female pediatrician in her 40s, wearing a white coat with a colorful badge, sitting at a child-friendly consultation desk with toys in the background, warm and gentle expression" width="300" height="360" src="/assets/site-doctors-patient-information-team-image-4.webp" alt="דיוקן רופאת ילדים בכירה" class="team-card-image">
+        </div>
+        <div class="team-card-content">
+          <h3 class="team-card-name">ד״ר רונית גולן</h3>
+          <p class="team-card-specialty">מנהלת מחלקת ילדים</p>
+          <p class="team-card-bio">רופאת ילדים בכירה עם גישה חמה ואישית, מתמחה ברפואת ילדים כללית, התפתחות הילד ומחלות זיהומיות בילדים.</p>
+        </div>
+      </article>
+
+      <!-- Card 5 -->
+      <article class="team-card">
+        <div class="team-card-image-wrapper">
+          <img loading="lazy" decoding="async" data-placeholder="doctors-patient-information-team-image-5" data-context="Portrait of a male neurologist in his 50s, wearing a navy suit and white coat, standing in a modern office with medical bookshelves, calm and authoritative presence" width="300" height="360" src="/assets/site-doctors-patient-information-team-image-5.webp" alt="דיוקן רופא נוירולוג מומחה" class="team-card-image">
+        </div>
+        <div class="team-card-content">
+          <h3 class="team-card-name">פרופ׳ דוד שמעוני</h3>
+          <p class="team-card-specialty">מנהל המערך הנוירולוגי</p>
+          <p class="team-card-bio">נוירולוג בכיר בעל שם בינלאומי, מוביל טיפולים חדשניים במחלות נוירודגנרטיביות ובשבץ מוחי.</p>
+        </div>
+      </article>
+
+      <!-- Card 6 -->
+      <article class="team-card">
+        <div class="team-card-image-wrapper">
+          <img loading="lazy" decoding="async" data-placeholder="doctors-patient-information-team-image-6" data-context="Portrait of a female dermatologist in her 40s, wearing a white coat, standing in a bright clinic room with a dermatoscope in hand, friendly and professional expression" width="300" height="360" src="/assets/site-doctors-patient-information-team-image-6.webp" alt="דיוקן רופאת עור בכירה" class="team-card-image">
+        </div>
+        <div class="team-card-content">
+          <h3 class="team-card-name">ד״ר נועה ברק</h3>
+          <p class="team-card-specialty">מומחית ברפואת עור</p>
+          <p class="team-card-bio">מתמחה באבחון וטיפול במחלות עור כרוניות, נגעים עוריים וטיפולים אסתטיים מתקדמים בגישה מותאמת אישית.</p>
+        </div>
+      </article>
+
+      <!-- Card 7 -->
+      <article class="team-card">
+        <div class="team-card-image-wrapper">
+          <img loading="lazy" decoding="async" data-placeholder="doctors-patient-information-team-image-7" data-context="Portrait of a male general surgeon in his 50s, wearing surgical scrubs, standing in a modern operating theater, focused and experienced look" width="300" height="360" src="/assets/site-doctors-patient-information-team-image-7.webp" alt="דיוקן רופא כירורג כללי" class="team-card-image">
+        </div>
+        <div class="team-card-content">
+          <h3 class="team-card-name">ד״ר איתן זהר</h3>
+          <p class="team-card-specialty">מנהל מחלקת כירורגיה כללית</p>
+          <p class="team-card-bio">מנתח בכיר עם ניסיון עשיר בניתוחים לפרוסקופיים וזעיר-פולשניים, מחויב לטכניקות החדשניות ביותר.</p>
+        </div>
+      </article>
+
+      <!-- Card 8 -->
+      <article class="team-card">
+        <div class="team-card-image-wrapper">
+          <img loading="lazy" decoding="async" data-placeholder="doctors-patient-information-team-image-8" data-context="Portrait of a female gynecologist in her 40s, wearing a white coat, standing in a calm consultation room with a plant in the background, empathetic and reassuring smile" width="300" height="360" src="/assets/site-doctors-patient-information-team-image-8.webp" alt="דיוקן רופאת נשים בכירה" class="team-card-image">
+        </div>
+        <div class="team-card-content">
+          <h3 class="team-card-name">ד״ר שרה אלון</h3>
+          <p class="team-card-specialty">מנהלת מחלקת נשים ויולדות</p>
+          <p class="team-card-bio">גינקולוגית בכירה עם התמחות בהריונות בסיכון גבוה ורפואת אם-עובר, מלווה משפחות לאורך כל הדרך.</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="team-cta">
+      <a href="/contact" class="team-cta-button">לכל הרופאים והצוות הרפואי</a>
+    </div>
+  </div>
+
+  <!-- Bottom divider: diagonal transition to patient preparation section -->
+  <div class="doctors-patient-information-team-divider-wrapper">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1200 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="0,80 1200,80 1200,0 0,80" fill="var(--bg-dark)"/>
+    </svg>
+  </div>
+</section>
+
+<section class="doctors-patient-information-guide-section" data-layout-spec="רופאים ומידע למטופל-guide" dir="rtl">
+    <div class="doctors-patient-information-guide-section__container">
+        <!-- START: Content Column -->
+        <div class="doctors-patient-information-guide-section__content">
+            <h2 class="doctors-patient-information-guide-section__title">מידע חיוני למטופל ולמשפחה</h2>
+            <p class="doctors-patient-information-guide-section__subtitle">במרכז הרפואי סוניל אנו מלווים אתכם בכל שלב. ריכזנו עבורכם את כל המידע הדרוש להכנה לאשפוז, זכויותיכם הרפואיות, ומדיניות ביקורי המשפחות, כדי שתוכלו להתמקד בהחלמה בראש שקט.</p>
+            
+            <!-- Block 1: Preparation for Hospitalization -->
+            <div class="doctors-patient-information-guide-section__block">
+                <div class="doctors-patient-information-guide-section__block-icon">
+                    <svg data-element-type="icon" data-icon-type="svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM9 17H7V10H9V17ZM13 17H11V7H13V17ZM17 17H15V13H17V17Z" fill="currentColor"/></svg>
+                </div>
+                <div class="doctors-patient-information-guide-section__block-text">
+                    <h3>הכנה לאשפוז</h3>
+                    <p>לקראת הגעתכם למרכז הרפואי סוניל, חשוב להיערך מראש. יש להצטייד בתעודת זהות, כרטיס קופת חולים, הפניה רפואית עדכנית, וסיכום מחלה רלוונטי. כמו כן, מומלץ להביא תיק עם חפצים אישיים: בגדים נוחים להחלפה, כלי רחצה בסיסיים, תרופות קבועות באריזתן המקורית, ומטען לטלפון נייד. צוות המחלקה יקבל אתכם, יסביר על מהלך האשפוז הצפוי ויוודא שיש ברשותכם את כל המסמכים הנדרשים.</p>
+                </div>
+            </div>
+
+            <!-- Block 2: Patient Rights -->
+            <div class="doctors-patient-information-guide-section__block">
+                <div class="doctors-patient-information-guide-section__block-icon">
+                    <svg data-element-type="icon" data-icon-type="svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 1L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 1ZM12 11.99H17C16.47 16.11 13.72 19.03 12 19.93V12H7V6.34L12 3.19V11.99Z" fill="currentColor"/></svg>
+                </div>
+                <div class="doctors-patient-information-guide-section__block-text">
+                    <h3>זכויות המטופל</h3>
+                    <p>חוק זכויות החולה בישראל מעניק לך שורה של זכויות במהלך שהותך בבית החולים. ביניהן: הזכות לקבלת מידע מלא על מצבך הרפואי, הזכות להסכמה מדעת לכל טיפול, הזכות לשמירה על סודיות רפואית מלאה, והזכות לקבלת טיפול רפואי הולם ומקצועי ללא כל הפליה. כמו כן, באפשרותך לעיין ברשומה הרפואית שלך ולבקש העתק ממנה. צוות השירות הרפואי שלנו מחויב לכבד את כבודך ופרטיותך בכל עת.</p>
+                </div>
+            </div>
+
+            <!-- Block 3: Family Visits -->
+            <div class="doctors-patient-information-guide-section__block">
+                <div class="doctors-patient-information-guide-section__block-icon">
+                    <svg data-element-type="icon" data-icon-type="svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 11C17.66 11 18.99 9.66 18.99 8C18.99 6.34 17.66 5 16 5C14.34 5 13 6.34 13 8C13 9.66 14.34 11 16 11ZM8 11C9.66 11 10.99 9.66 10.99 8C10.99 6.34 9.66 5 8 5C6.34 5 5 6.34 5 8C5 9.66 6.34 11 8 11ZM8 13C5.67 13 1 14.17 1 16.5V19H15V16.5C15 14.17 10.33 13 8 13ZM16 13C15.71 13 15.38 13.02 15.03 13.05C16.19 13.89 17 15.02 17 16.5V19H23V16.5C23 14.17 18.33 13 16 13Z" fill="currentColor"/></svg>
+                </div>
+                <div class="doctors-patient-information-guide-section__block-text">
+                    <h3>ביקורי משפחות</h3>
+                    <p>אנו מאמינים כי תמיכת המשפחה היא חלק בלתי נפרד מתהליך ההחלמה. שעות הביקור במרבית המחלקות הן בין 16:00 ל-20:00, בתיאום מראש עם צוות המחלקה. במחלקות טיפול נמרץ ובפגייה קיימות הנחיות מיוחדות. אנו מבקשים להקפיד על שמירת השקט במחלקה, להגיע עם מספר מבקרים מצומצם בכל פעם, ולהימנע מהגעה בעת מחלה. לילדים מתחת לגיל 12 נדרש אישור מיוחד מראש.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- END: Checklist Cards Cluster -->
+        <div class="doctors-patient-information-guide-section__checklist">
+            <div class="doctors-patient-information-guide-section__card">
+                <div class="doctors-patient-information-guide-section__card-header">
+                    <span class="doctors-patient-information-guide-section__card-icon">
+                        <svg data-element-type="icon" data-icon-type="svg" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6H16V4C16 2.89 15.11 2 14 2H10C8.89 2 8 2.89 8 4V6H4C2.89 6 2 6.89 2 8V19C2 20.11 2.89 21 4 21H20C21.11 21 22 20.11 22 19V8C22 6.89 21.11 6 20 6ZM10 4H14V6H10V4ZM20 19H4V8H20V19Z" fill="currentColor"/></svg>
+                    </span>
+                    <h3 class="doctors-patient-information-guide-section__card-title">מה להביא לאשפוז</h3>
+                </div>
+                <ul class="doctors-patient-information-guide-section__card-list">
+                    <li>תעודת זהות וכרטיס קופת חולים</li>
+                    <li>הפניה רפואית וסיכומי מחלה</li>
+                    <li>תרופות קבועות באריזתן המקורית</li>
+                    <li>בגדים נוחים וכלי רחצה</li>
+                    <li>מטען לטלפון נייד</li>
+                    <li>חפצים אישיים מרגיעים (ספר, מוזיקה)</li>
+                </ul>
+            </div>
+
+            <div class="doctors-patient-information-guide-section__card">
+                <div class="doctors-patient-information-guide-section__card-header">
+                    <span class="doctors-patient-information-guide-section__card-icon">
+                        <svg data-element-type="icon" data-icon-type="svg" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z" fill="currentColor"/></svg>
+                    </span>
+                    <h3 class="doctors-patient-information-guide-section__card-title">למה לצפות בתהליך</h3>
+                </div>
+                <ul class="doctors-patient-information-guide-section__card-list">
+                    <li>קבלת פנים אישית בתחנת האחיות</li>
+                    <li>תשאול רפואי ראשוני על ידי צוות המחלקה</li>
+                    <li>הסבר על תוכנית הטיפול הצפויה</li>
+                    <li>זמינות מלאה לשאלות ובקשות</li>
+                    <li>מעקב יומי אחר מדדים רפואיים</li>
+                    <li>תיאום פגישות עם יועצים מומחים</li>
+                </ul>
+            </div>
+
+            <div class="doctors-patient-information-guide-section__card">
+                <div class="doctors-patient-information-guide-section__card-header">
+                    <span class="doctors-patient-information-guide-section__card-icon">
+                        <svg data-element-type="icon" data-icon-type="svg" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 17H11V11H13V17ZM13 9H11V7H13V9Z" fill="currentColor"/></svg>
+                    </span>
+                    <h3 class="doctors-patient-information-guide-section__card-title">עקרונות הביקור</h3>
+                </div>
+                <ul class="doctors-patient-information-guide-section__card-list">
+                    <li>שעות ביקור: 16:00 - 20:00</li>
+                    <li>יש לתאם ביקור מראש מול המחלקה</li>
+                    <li>מקסימום 2 מבקרים בו-זמנית</li>
+                    <li>אין להגיע עם ילדים מתחת לגיל 12 ללא אישור</li>
+                    <li>שמירה על שקט מוחלט במחלקה</li>
+                    <li>הימנעו מביקור בעת מחלה</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Divider: Gradient Dissolve -->
+    <div class="doctors-patient-information-guide-section__divider-wrapper" aria-hidden="true">
+        <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1200 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="guide-dissolve-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="var(--bg-light)" stop-opacity="0"/>
+                    <stop offset="100%" stop-color="var(--bg-light)" stop-opacity="1"/>
+                </linearGradient>
+            </defs>
+            <rect x="0" y="0" width="1200" height="80" fill="url(#guide-dissolve-grad)"/>
+        </svg>
+    </div>
+</section>
+
+<section class="doctors-patient-information-resources-section" data-layout-spec="רופאים ומידע למטופל-resources" dir="rtl">
+  <div class="resources-container">
+    <div class="resources-header">
+      <h2 class="resources-title">טפסים שימושיים ומידע למטופל</h2>
+      <p class="resources-subtitle">הכנה לאשפוז, זכויות, ביקורי משפחות וטפסים חיוניים — הכול במקום אחד</p>
+      <div class="resources-accent"></div>
+    </div>
+
+    <div class="resources-grid">
+      <!-- Card 1 -->
+      <article class="resource-card">
+        <div class="resource-icon-wrapper">
+          <svg class="resource-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" data-element-type="icon" data-icon-type="svg"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="9" x2="15" y2="9"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="12" y2="17"/></svg>
+        </div>
+        <h3 class="resource-card-title">טופס הסכמה מדעת</h3>
+        <p class="resource-card-desc">טופס הסכמה לטיפול רפואי — להורדה, מילוי והבאה בעת ההגעה למחלקה.</p>
+        <span class="resource-badge">PDF</span>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="resource-card">
+        <div class="resource-icon-wrapper">
+          <svg class="resource-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" data-element-type="icon" data-icon-type="svg"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3 class="resource-card-title">זכויות המטופל</h3>
+        <p class="resource-card-desc">חוברת זכויות המטופל על פי חוק — מידע מקיף על זכויותיך במהלך האשפוז.</p>
+        <span class="resource-badge">PDF</span>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="resource-card">
+        <div class="resource-icon-wrapper">
+          <svg class="resource-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" data-element-type="icon" data-icon-type="svg"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3 class="resource-card-title">הכנה לאשפוז</h3>
+        <p class="resource-card-desc">דף הנחיות להכנה לאשפוז — מה להביא, שעות קבלה וליווי משפחתי.</p>
+        <span class="resource-badge">PDF</span>
+      </article>
+
+      <!-- Card 4 -->
+      <article class="resource-card">
+        <div class="resource-icon-wrapper">
+          <svg class="resource-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" data-element-type="icon" data-icon-type="svg"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3 class="resource-card-title">ביקורי משפחות</h3>
+        <p class="resource-card-desc">מדיניות ביקורי משפחות — שעות ביקור, הנחיות מיוחדות והגבלות.</p>
+        <span class="resource-badge">PDF</span>
+      </article>
+
+      <!-- Card 5 -->
+      <article class="resource-card">
+        <div class="resource-icon-wrapper">
+          <svg class="resource-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" data-element-type="icon" data-icon-type="svg"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <h3 class="resource-card-title">שאלון רפואי מקדים</h3>
+        <p class="resource-card-desc">שאלון היסטוריה רפואית למילוי טרם הפגישה עם הרופא המטפל.</p>
+        <span class="resource-badge">DOC</span>
+      </article>
+
+      <!-- Card 6 -->
+      <article class="resource-card">
+        <div class="resource-icon-wrapper">
+          <svg class="resource-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" data-element-type="icon" data-icon-type="svg"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3 class="resource-card-title">מדריך שירותי האשפוז</h3>
+        <p class="resource-card-desc">מדריך דיגיטלי מקיף — מחלקות, שירותים נלווים ומידע שימושי למאושפז.</p>
+        <span class="resource-badge">PDF</span>
+      </article>
+    </div>
+
+    <!-- International Patients Note Panel -->
+    <aside class="international-note">
+      <div class="international-note-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-element-type="icon" data-icon-type="svg"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      </div>
+      <div class="international-note-content">
+        <h3 class="international-note-title">מידע למטופלים מחו"ל</h3>
+        <p class="international-note-text">המרכז הרפואי סוניל מעניק שירותי רפואה מתקדמים גם למטופלים המגיעים מחוץ לישראל. צוות המתאמים הבינלאומי שלנו זמין לסייע בתרגום מסמכים רפואיים, תיאום תורים, ליווי אישי ופתרונות אשפוז מותאמים. לקבלת סיוע ראשוני, אנא פנו למחלקת תיירות מרפא.</p>
+        <a href="#contact" class="international-note-link">
+          <span>צור קשר עם צוות תיירות מרפא</span>
+          <svg class="link-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="11 3 14 8 11 13"/><line x1="14" y1="8" x2="2" y2="8"/></svg>
+        </a>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Bottom Divider: Navy Curve -->
+  <div class="resources-divider-wrapper" data-no-icon-edit="true" aria-hidden="true">
+    <svg viewBox="0 0 1200 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,80 L0,45 Q60,30 120,42 T240,38 Q300,32 360,44 T480,35 Q540,40 600,32 T720,42 Q780,35 840,44 T960,38 Q1020,32 1080,40 T1200,35 L1200,80 Z" fill="#1B6B5A"/>
+    </svg>
+  </div>
+</section>
+
+<section class="doctors-patient-information-cta-section" data-layout-spec="רופאים ומידע למטופל-cta" dir="rtl">
+  <div class="doctors-patient-information-cta-section__container">
+    <div class="doctors-patient-information-cta-section__content">
+      <h2 class="doctors-patient-information-cta-section__heading">צריכים עזרה בהכנה לביקור או במציאת הרופא המתאים?</h2>
+      <p class="doctors-patient-information-cta-section__text">אנחנו כאן בשבילכם. צוות המרכז הרפואי סוניל זמין ללוות אתכם בכל שלב — מייעוץ טלפוני ראשוני ועד לתיאום פגישה עם המומחים המובילים בתחומם. פנו אלינו עוד היום וקבלו מענה מקצועי, אנושי ומהיר.</p>
+      <a href="#" class="doctors-patient-information-cta-section__button">
+        <span style="color: #1A1A1A !important">צור קשר</span>
+        <svg aria-hidden="true" data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+  </main>
+  
+  <footer class="site-footer" dir="rtl">
+  <div class="footer-container">
+    <div class="footer-grid">
+      <!-- Company Info -->
+      <div class="footer-col footer-company-col">
+        <img src="/assets/healthcare-hospital-logo.webp" alt="המרכז הרפואי סוניל" class="logo">
+        <p class="footer-tagline">המרכז הרפואי סוניל מחויב למצוינות רפואית, חדשנות וטיפול אנושי ומסור בכל שלב. אנו מציעים מגוון רחב של שירותים רפואיים מתקדמים בסביבה תומכת ומכילה.</p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-col footer-links-col">
+        <h4>ניווט מהיר</h4>
+        <ul class="footer-links">
+          <li><a href="/">בית</a></li>
+          <li><a href="/about">אודות</a></li>
+          <li><a href="/location-access">מיקום והגעה</a></li>
+          <li><a href="/departments-clinics">מחלקות ומרפאות</a></li>
+          <li><a href="/doctors-patient-information">רופאים ומידע למטופל</a></li>
+          <li><a href="/faq-news-contact">שאלות נפוצות, חדשות ויצירת קשר</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="footer-col footer-contact-col">
+        <h4>צור קשר</h4>
+        <ul class="footer-contact">
+          <li>
+            <span class="contact-icon"><i class="fas fa-envelope"></i></span>
+            <span class="contact-text"><a href="mailto:[business_email]">[business_email]</a></span>
+          </li>
+          <li>
+            <span class="contact-icon"><i class="fas fa-phone"></i></span>
+            <span class="contact-text"><a href="tel:[business_phone]">[business_phone]</a></span>
+          </li>
+          <li><a href="/"><span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span>
+            <span class="contact-text">[business_address]</span></a></li>
+        </ul>
+      </div>
+
+      <!-- Business Hours -->
+      <div class="footer-col footer-hours-col">
+        <h4>שעות פעילות</h4>
+        <ul class="footer-hours">
+          <li><a href="/"><span class="hours-day">ימים א'–ה'</span> <span class="hours-time">09:00–18:00</span></a></li>
+          <li><a href="/"><span class="hours-day">יום ו'</span> <span class="hours-time">09:00–13:00</span></a></li>
+          <li><a href="/"><span class="hours-day">שבת</span> <span class="hours-time">סגור</span></a></li>
+        </ul>
+      </div>
+
+      <!-- Social Media -->
+      <div class="footer-col footer-social-col">
+        <h4>עקבו אחרינו</h4>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook" data-zappy-social-placeholder="true"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram" data-zappy-social-placeholder="true"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="WhatsApp" data-zappy-social-placeholder="true"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="footer-bottom">
+      <div class="footer-copyright">
+        <p>© 2026 המרכז הרפואי סוניל. כל הזכויות שמורות.</p>
+      </div>
+      <div class="footer-bottom-links">
+        <a href="/privacy">מדיניות פרטיות</a>
+        <a href="/terms">תנאי שימוש</a>
+        <a href="/accessibility">נגישות</a>
+        <a href="https://zappy5.com" target="_blank" class="zappy-attribution">נוצר באמצעות Zappy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+  
+  <a href="https://wa.me/[whatsapp_handle]" class="whatsapp-float" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  
+  <div data-integration="accessibility:toolbar"></div>
+
+    <script src="/script.js"></script>
+
+    <script id="zappy-mobile-submenu-script">
+    (function() {
+      function initMobileSubmenuToggles() {
+        if (window.innerWidth > 768) {
+          document.querySelectorAll('.mobile-submenu-toggle').forEach(function(btn) { btn.remove(); });
+          document.querySelectorAll('.sub-menu.mobile-expanded').forEach(function(menu) { menu.classList.remove('mobile-expanded'); });
+          return;
+        }
+        var items = document.querySelectorAll('.nav-menu li:has(.sub-menu), nav li:has(.sub-menu), .navbar li:has(.sub-menu), #navMenu li:has(.sub-menu)');
+        items.forEach(function(li) {
+          if (li.querySelector('.mobile-submenu-toggle')) return;
+          var submenu = li.querySelector('.sub-menu');
+          var parentLink = li.querySelector(':scope > a');
+          if (!submenu || !parentLink) return;
+          var toggleBtn = document.createElement('button');
+          toggleBtn.className = 'mobile-submenu-toggle';
+          toggleBtn.setAttribute('aria-label', 'Toggle submenu');
+          toggleBtn.setAttribute('type', 'button');
+          parentLink.insertAdjacentElement('afterend', toggleBtn);
+          toggleBtn.addEventListener('click', function(e) {
+            e.preventDefault(); e.stopPropagation();
+            document.querySelectorAll('.sub-menu.mobile-expanded').forEach(function(menu) {
+              if (menu !== submenu) { menu.classList.remove('mobile-expanded'); var t = menu.parentElement.querySelector('.mobile-submenu-toggle'); if(t) t.classList.remove('expanded'); }
+            });
+            submenu.classList.toggle('mobile-expanded');
+            toggleBtn.classList.toggle('expanded');
+          });
+        });
+      }
+      if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', initMobileSubmenuToggles); }
+      else { initMobileSubmenuToggles(); }
+      var resizeTimer; window.addEventListener('resize', function() { clearTimeout(resizeTimer); resizeTimer = setTimeout(initMobileSubmenuToggles, 250); });
+      // Re-initialize when mobile menu becomes visible (MutationObserver)
+      var observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          if (mutation.type === 'attributes') {
+            var target = mutation.target;
+            if (target.classList && (target.classList.contains('active') || target.classList.contains('open'))) {
+              setTimeout(initMobileSubmenuToggles, 100);
+            }
+          }
+        });
+      });
+      setTimeout(function() {
+        document.querySelectorAll('.mobile-menu, .nav-menu, #navMenu, nav').forEach(function(menu) {
+          observer.observe(menu, { attributes: true, attributeFilter: ['class', 'style'] });
+        });
+      }, 500);
+    })();
+    </script>
+</body>
+</html>
